@@ -19,7 +19,8 @@ class App extends Component {
       persons: [
         { nama: newName, umur: 16 },
         { nama: 'shofie', umur: 14 }
-      ]
+      ],
+      showPersons: false,
     })
   }
   changeHandler = event => {
@@ -29,6 +30,13 @@ class App extends Component {
         { nama: event.target.value, umur: 16 }
       ]
     })
+  }
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    });
+
   }
 
   render() {
@@ -41,14 +49,19 @@ class App extends Component {
       textAlign: 'center',
       marginBottom: '20px',
       padding: '16px',
+      borderRadius: '12px'
     };
 
     return (
       <div className='App'>
         <h1>Hai Buddy</h1>
-        <button className='button' onClick={this.switchHandler.bind(this, 'Maximilian')} style={style}>Switch Name</button>
-        <Person nama={this.state.persons[0].nama} umur={this.state.persons[0].umur}> My Hobby is Sleeping</Person>
-        <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person>
+        <button className='button' onClick={this.togglePersonHandler} style={style}>Switch Name</button>
+
+        {this.state.showPersons ?
+          <div>
+            <Person nama={this.state.persons[0].nama} umur={this.state.persons[0].umur}> My Hobby is Sleeping</Person>
+            <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person>
+          </div> : null}
       </div>
     )
   }
