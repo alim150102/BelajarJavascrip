@@ -52,16 +52,22 @@ class App extends Component {
       borderRadius: '12px'
     };
 
+    let perubahan = null;
+
+    if (this.state.showPersons) {
+      perubahan = (
+        <div>
+          <Person nama={this.state.persons[0].nama} umur={this.state.persons[0].umur}> My Hobby is Sleeping</Person>
+          <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person>
+        </div>
+      );
+    }
+
     return (
       <div className='App'>
         <h1>Hai Buddy</h1>
         <button className='button' onClick={this.togglePersonHandler} style={style}>Switch Name</button>
-
-        {this.state.showPersons ?
-          <div>
-            <Person nama={this.state.persons[0].nama} umur={this.state.persons[0].umur}> My Hobby is Sleeping</Person>
-            <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person>
-          </div> : null}
+        {perubahan}
       </div>
     )
   }
