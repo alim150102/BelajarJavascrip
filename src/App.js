@@ -25,22 +25,22 @@ class App extends Component {
 
   changeHandler = (event, id) => {
 
-    const personIndex = this.state.persons.findIndex(p => {
+    const personIndex = this.state.persons.findIndex(p => { //nyari index array 
       return p.id === id;
     });
 
-    const person = {
+    const person = { //buat variable baru dengan meng-copy state persons sesuai index menjadi array
       ...this.state.persons[personIndex]
     };
 
-    person.nama = event.target.value;
+    person.nama = event.target.value; //mereplace person sesuai yang di ketik
 
-    const persons = [...this.state.persons];
+    const persons = [...this.state.persons]; //membuat variable dengan cara full copy state person 
 
-    persons[personIndex] = person;
+    persons[personIndex] = person; // mereplace index
 
 
-    this.setState({ persons: persons })
+    this.setState({ persons: persons }) // mengubah isi dari state persons dengan persons yang baru
   }
 
   togglePersonHandler = () => {
