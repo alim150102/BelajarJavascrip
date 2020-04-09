@@ -9,7 +9,9 @@ class App extends Component {
   state = {
     persons: [
       { id: 'lkjsdlkjfa', nama: 'ali', umur: 18 },
-      { id: 'lkjafds;lj', nama: 'fanny', umur: 16 }
+      { id: 'lkjafds;lj', nama: 'fanny', umur: 16 },
+      { id: 'jkdfjslkjd', nama: 'Mahmod', umur: 17 }
+
     ]
   }
 
@@ -61,14 +63,14 @@ class App extends Component {
   render() {
 
     const style = {
-      width: '15 %',
-      height: '10 % px',
-      border: '1px solid #eee',
-      boxShadow: '0 3px 5px silver',
-      textAlign: 'center',
-      marginBottom: '20px',
-      padding: '16px',
-      borderRadius: '12px'
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer',
+      borderRadius: '5px',
+      marginBottom: '20px'
     };
 
     let person = null;
@@ -86,13 +88,23 @@ class App extends Component {
           {/* <Person nama={this.state.persons[0].nama} umur={this.state.persons[0].umur}> My Hobby is Sleeping</Person>
           <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person> */}
         </div>
-      )
+      );
+      style.backgroundColor = 'red';
+    }
+
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className='App'>
-        <h1>Hai Buddy</h1>
-        <button className='button' onClick={this.togglePersonHandler} style={style}>Switch Name</button>
+        <h1 >Hai Buddy</h1>
+        <p className={classes.join(' ')}>This is my persons</p>
+        <button className={classes.join(' ')} onClick={this.togglePersonHandler} style={style}>Switch Name</button>
         {person}
       </div>
     )
