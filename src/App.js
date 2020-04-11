@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components';
 import Person from './Person/Person';
 
+const StyledButton = styled.button`
+  background-color:${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  &:hover {
+    background-color : ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color : black;
+  }
+`;
+
 class App extends Component {
-
-
 
   state = {
     persons: [
@@ -71,11 +84,7 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer',
       borderRadius: '5px',
-      marginBottom: '20px',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      marginBottom: '20px'
     };
 
     let person = null;
@@ -94,11 +103,7 @@ class App extends Component {
           <Person nama={this.state.persons[0].nama} umur={this.state.persons[1].umur} click={this.switchHandler.bind(this, 'Max')} changed={this.changeHandler}> My Hobby is Farming</Person> */}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'white'
-      };
+      // style.backgroundColor = 'red';
     }
 
     let classes = [];
@@ -110,16 +115,14 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        <div className='App'>
-          <h1 >Hai Buddy</h1>
-          <p className={classes.join(' ')}>This is my persons</p>
-          <button className={classes.join(' ')} onClick={this.togglePersonHandler} style={style}>Switch Name</button>
-          {person}
-        </div>
-      </StyleRoot>
+      <div className='App'>
+        <h1 >Hai Buddy</h1>
+        <p className={classes.join(' ')}>This is my persons</p>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonHandler}>Switch Name</StyledButton>
+        {person}
+      </div>
     )
   }
 }
 
-export default Radium(App);
+export default App;
