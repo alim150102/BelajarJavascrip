@@ -1,4 +1,4 @@
-.person {
+.Person {
     width: 40%;
     padding: 16px;
     margin:auto;
@@ -13,4 +13,10 @@
     background-color: rgb(241, 224, 240);
     box-shadow: 0 2px 3px #ccc;
     border-radius: 5px;
+}
+
+@media (min-width:500px) { 
+    .Person{
+        width:450px;
+    }
 }
