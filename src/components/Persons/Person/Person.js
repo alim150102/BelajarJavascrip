@@ -3,11 +3,6 @@ import classes from './Person.module.css';
 
 
 const person = props => {
-    const random = Math.random();
-
-    if (random > 0.8) {
-        throw new Error('Somthing went wrong');
-    }
     return (
         <div className={classes.Person}>
             <p onClick={props.click}>Hai I'm  {props.nama} and i'm {props.umur} years old</p>
