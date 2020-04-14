@@ -5,6 +5,10 @@ import Cockpit from '../components/CockPit/Cockpit';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] cosntructor');
+  }
 
   state = {
     persons: [
@@ -13,6 +17,19 @@ class App extends Component {
       { id: 'jkdfjslkjd', nama: 'Mahmod', umur: 17 }
 
     ]
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDeriveredStateFromProps', props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount');
   }
 
   switchHandler = newName => {
@@ -61,6 +78,7 @@ class App extends Component {
 
 
   render() {
+    console.log('[App.js] render');
 
     let person = null;
 
@@ -73,11 +91,10 @@ class App extends Component {
       // style.backgroundColor = 'red';
     }
 
-
-
     return (
       <div className={classes.App}>
         <Cockpit
+          title={this.props.appTitle}
           persons={this.state.persons}
           showPersons={this.state.showPersons}
           clicked={this.togglePersonHandler} />

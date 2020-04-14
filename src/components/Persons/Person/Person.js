@@ -3,6 +3,7 @@ import classes from './Person.module.css';
 
 
 const person = props => {
+    console.log('[Person.js] Rendering...');
     return (
         <div className={classes.Person}>
             <p onClick={props.click}>Hai I'm  {props.nama} and i'm {props.umur} years old</p>
