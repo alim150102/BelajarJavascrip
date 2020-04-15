@@ -28,9 +28,18 @@ class App extends Component {
     console.log('[App.js] componentDidMount');
   }
 
-  componentWillMount() {
-    console.log('[App.js] componentWillMount');
+  shouldComponentUpdate() {
+    console.log('[App.js]shouldComponentUpdate');
+    return true;
   }
+
+  componentDidUpdate() {
+    console.log('[App.js]componentDidUpdate');
+  }
+
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount');
+  // }
 
   switchHandler = newName => {
     this.setState({
